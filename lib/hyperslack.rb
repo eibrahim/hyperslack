@@ -27,7 +27,7 @@ module Hyperslack
     end
 
     def send_message(url, message)
-      uri = URI(url)
+R     uri = URI(url)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -56,6 +56,9 @@ module Hyperslack
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       headers = {'Content-Type' => 'application/json'}
+      req = Net::HTTP::Post.new(uri, headers)
+      req.body = body.to_json
+      return http.request(req)
   end
 
 
