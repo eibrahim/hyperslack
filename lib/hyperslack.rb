@@ -27,7 +27,7 @@ module Hyperslack
     end
 
     def send_message(url, message)
-R     uri = URI(url)
+      uri = URI(url)
       http = Net::HTTP.new(uri.host, uri.port)
       http.use_ssl = true
       http.verify_mode = OpenSSL::SSL::VERIFY_NONE
